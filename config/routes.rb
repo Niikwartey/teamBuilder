@@ -4,4 +4,12 @@ Rails.application.routes.draw do
 
   resources :surveys
 
+  resources :users do
+    resources :projects
+  end
+
+  get '/projects', to: 'projects#index'
+
+  # Catch-all route, redirects to root
+  match '*path', to: redirect('/'), via: :all
 end
