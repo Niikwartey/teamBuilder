@@ -5,7 +5,11 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :trackable, :validatable
   has_many :owned_projects, class_name: 'Project', foreign_key: 'manager_id'
   has_many :project_members
-  has_many :projects, through: :project_members, foreign_key: 'member_id'
+  has_many :projects, through: :project_members
   has_many :responses
   has_many :questions, through: :responses
+
+  # def projects
+  #   ProjectMember.where(member_id: self.id)
+  # end
 end
