@@ -1,0 +1,15 @@
+<h3>Create a New Project</h3>
+
+<%= form_for [@manager, @project] do |f| %>
+  <%= f.label :name %> <br />
+  <%= f.text_field :name  %> <br />
+
+  <%= f.label :description %> <br />
+  <%= f.text_area :description %> <br />
+
+  <%= f.collection_check_boxes :question_ids, @questions, :id, :text %> <br />
+
+  <%= f.submit class: 'btn btn-primary'%>
+
+<% end %>
+  
