@@ -4,15 +4,22 @@ class SurveysController < ApplicationController
     @survey = Survey.new
     @questions = Question.all
     @questions.each do |q|
-      @survey.responses.build(question_id: q.id)
+      @survey.responses.build(question_id: q.id, user_id: 1)
     end
     @checkboxes = (1..5).to_a
   end
 
   def create
-    byebug
+    @survey = Survey.new(survey_params)
+    if @survey.save
+      redirect_to root_path
+    else
+      @survey = Survey.new
+      render 'new'
+    end
   end
 
+<<<<<<< HEAD
 
   private
 
@@ -20,4 +27,9 @@ class SurveysController < ApplicationController
     params.require(:survey).permit(responses_attributes: [:answer, :importance, :question_id, :survey_id])
   end
 
+=======
+  def survey_params
+    params.require(:survey).permit(:responses_attributes => [:answer, :user_id, :importance, :question_id])
+  end
+>>>>>>> paige
 end
