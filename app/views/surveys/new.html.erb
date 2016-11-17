@@ -1,10 +1,11 @@
 <%= form_for @survey do |f| %>
-
-  <!-- <% @survey.responses.each do |r| %>
-    <%= r.question.text %><br>
-    <%= f.text_field :answer %><br>
-    <%= collection_checkboxes :responses, @checkboxes
-  <% end %> -->
-
+  <% @survey.responses.each do |response| %>
+    <%= f.fields_for :response do |r| %>
+      <% byebug %>
+      Question: <%= response.question.text %><br>
+      Answer: <%= r.text_field :answer %><br>
+      Importance: <%= r.text_field :importance %> <br>
+      <% end %>
+    <% end %>
   <%= f.submit %>
 <% end %>
