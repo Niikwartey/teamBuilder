@@ -4,9 +4,6 @@ class Survey < ApplicationRecord
 
   accepts_nested_attributes_for :responses
 
-<<<<<<< HEAD
-  
-=======
   def responses_attributes=(attributes)
     attributes.values.each do |attr|
       response = Response.new(attr)
@@ -14,5 +11,5 @@ class Survey < ApplicationRecord
       self.responses << response
     end
   end
->>>>>>> paige
+
 end
