@@ -1,10 +1,9 @@
 <%= form_for @survey do |f| %>
+    <%= f.fields_for :responses do |r| %>
+      Question: <%= r.object.question.text %><br>
+      Answer: <%= r.text_field :answer %><br>
+      Importance: <%= r.text_field :importance %> <br>
 
-  <!-- <% @survey.responses.each do |r| %>
-    <%= r.question.text %><br>
-    <%= f.text_field :answer %><br>
-    <%= collection_checkboxes :responses, @checkboxes
-  <% end %> -->
-
+    <% end %>
   <%= f.submit %>
 <% end %>

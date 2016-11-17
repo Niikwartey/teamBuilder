@@ -10,8 +10,10 @@ class SurveysController < ApplicationController
   end
 
   def create
-
+    byebug
   end
+
+
 
 
 end
