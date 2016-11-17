@@ -1,9 +1,11 @@
 <%= form_for @survey do |f| %>
     <%= f.fields_for :responses do |r| %>
-      Question: <%= r.object.question.text %><br>
-      Answer: <%= r.text_field :answer %><br>
-      Importance: <%= r.text_field :importance %> <br>
-
+      <%= r.object.question.text %><br>
+      <%= label :answer, "True", value: true %>
+      <%= r.radio_button :answer, true %>
+      <%= label :answer, "False", value: false %>
+      <%= r.radio_button :answer, false %><br>
+      Importance: <%= r.collection_radio_buttons :importance, @checkboxes %> <br>
     <% end %>
   <%= f.submit %>
 <% end %>
