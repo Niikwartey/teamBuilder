@@ -18,8 +18,13 @@ class SurveysController < ApplicationController
     if @survey.valid?
       redirect_to projects_path
     else
-      redirect_to root_path
+      flash[:notice] = "Please fill out all responses"
       @survey = Survey.new
+      @questions = Question.all
+      @questions.each do |q|
+        @survey.responses.build(question_id: q.id, user_id: current_user.id)
+      end
+      @checkboxes = (1..5).to_a
       render 'new'
     end
   end
