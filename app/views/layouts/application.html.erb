@@ -12,6 +12,8 @@
 
     <%= render 'layouts/nav' %>
 
-    <%= yield %>
+    <%= content_tag :div, class: 'container' do %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>
