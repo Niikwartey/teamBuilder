@@ -1,0 +1,10 @@
+<%= form_for @survey do |f| %>
+
+  <!-- <% @survey.responses.each do |r| %>
+    <%= r.question.text %><br>
+    <%= f.text_field :answer %><br>
+    <%= collection_checkboxes :responses, @checkboxes
+  <% end %> -->
+
+  <%= f.submit %>
+<% end %>
