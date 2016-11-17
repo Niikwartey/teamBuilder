@@ -5,7 +5,7 @@
       <%= r.radio_button :answer, true %>
       <%= label :answer, "False", value: false %>
       <%= r.radio_button :answer, false %><br>
-      Importance: <%= r.collection_radio_buttons :importance, @checkboxes %> <br>
+      Importance: <%= r.collection_radio_buttons :importance, @checkboxes, :to_i, :to_i %><br>
     <% end %>
   <%= f.submit %>
 <% end %>
