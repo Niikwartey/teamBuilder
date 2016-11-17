@@ -1,5 +1,5 @@
 class SurveysController < ApplicationController
-
+  before_action :authenticate_user!
   def new
     @survey = Survey.new
     @questions = Question.all
