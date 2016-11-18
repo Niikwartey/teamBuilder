@@ -14,13 +14,11 @@ class SurveysController < ApplicationController
 
   def create
     @survey = Survey.new(survey_params)
-    if @survey.save
+    if @survey.valid?
+      @survey.save
       redirect_to projects_path
     else
       @questions = Question.all
-      @questions.each do |q|
-        @survey.responses.build(question_id: q.id, user_id: current_user.id)
-      end
       @checkboxes = (1..5).to_a
       render 'new'
     end

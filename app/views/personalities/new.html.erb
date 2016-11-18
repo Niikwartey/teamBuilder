@@ -2,29 +2,33 @@
 
   <%= f.hidden_field :user_id, value: current_user.id %>
 
-    <%= @personality_questions[0] %>
-    <%= label :intro_extroversion, "Introvert", value: true %>
-    <%= f.radio_button :intro_extroversion, true %>
-    <%= label :intro_extroversion, "False", value: false %>
-    <%= f.radio_button :intro_extroversion, false %>
+  <%= @personality_questions[0] %>
+  <%= label :intro_extroversion, "Introvert", value: true %>
+  <%= f.radio_button :intro_extroversion, true %>
+  <%= @personality_questions[1] %>
+  <%= label :intro_extroversion, "False", value: false %>
+  <%= f.radio_button :intro_extroversion, false %>
 
-    <%= @personality_questions[1] %>
-    <%= label :sensing_intuition, "Different", value: true %>
-    <%= f.radio_button :sensing_intuition, true %>
-    <%= label :sensing_intuition, "False", value: false %>
-    <%= f.radio_button :sensing_intuition, false %>
+  <%= @personality_questions[2] %>
+  <%= label :sensing_intuition, "Different", value: true %>
+  <%= f.radio_button :sensing_intuition, true %>
+  <%= @personality_questions[3] %>
+  <%= label :sensing_intuition, "False", value: false %>
+  <%= f.radio_button :sensing_intuition, false %>
 
-    <%= @personality_questions[2] %>
-    <%= label :thinking_feeling, "Different", value: true %>
-    <%= f.radio_button :thinking_feeling, true %>
-    <%= label :thinking_feeling, "False", value: false %>
-    <%= f.radio_button :thinking_feeling, false %>
+  <%= @personality_questions[4] %>
+  <%= label :thinking_feeling, "Different", value: true %>
+  <%= f.radio_button :thinking_feeling, true %>
+  <%= @personality_questions[5] %>
+  <%= label :thinking_feeling, "False", value: false %>
+  <%= f.radio_button :thinking_feeling, false %>
 
-    <%= @personality_questions[3] %>
-    <%= label :judging_perceiving, "Different", value: true %>
-    <%= f.radio_button :judging_perceiving, true %>
-    <%= label :judging_perceiving, "False", value: false %>
-    <%= f.radio_button :judging_perceiving, false %>
+  <%= @personality_questions[6] %>
+  <%= label :judging_perceiving, "Different", value: true %>
+  <%= f.radio_button :judging_perceiving, true %>
+  <%= @personality_questions[7] %>
+  <%= label :judging_perceiving, "False", value: false %>
+  <%= f.radio_button :judging_perceiving, false %>
 
   <%= f.submit %>
 
