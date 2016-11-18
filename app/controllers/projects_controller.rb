@@ -1,11 +1,17 @@
 class ProjectsController < ApplicationController
-  before_action :set_manager, only: [:new, :create]
+  before_action :set_manager, only: [:new, :create, :index]
+  before_action :set_project, only: [:show]
+
   def index
-    
+    @projects = @manager.owned_projects
   end
 
   def show
 
+  end
+
+  def showall
+    @projects = Project.all
   end
 
   def new

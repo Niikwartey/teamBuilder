@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     resources :projects
   end
 
-  get '/projects', to: 'projects#index'
+  get '/projects', to: 'projects#showall'
+
 
   # Catch-all route, redirects to root
   match '*path', to: redirect('/'), via: :all

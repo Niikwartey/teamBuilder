@@ -1,0 +1,11 @@
+This is the project index page
+<h1>Browse Projects</h1>
+
+<% @projects. each do |project| %>
+  <h3><%= project.name %> </h3>
+  <%= project.manager.first_name %>
+  created: <%= project.created_at %>
+  <p> <%= project.description %>
+
+
+<% end %>
