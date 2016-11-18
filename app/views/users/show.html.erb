@@ -1,0 +1,30 @@
+user show page
+<div class="container">
+  <h1><%= "#{@user.first_name} #{@user.last_name}" %>'s Profile</h1>
+  <hr />
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Managed Projects</a></li>
+    <li><a data-toggle="tab" href="#menu1">Projects</a></li>
+    <%# <li><a data-toggle="tab" href="#menu2">Completed Projects</a></li> %>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <% @user.owned_projects.each do |project| %>
+        <h3><%= link_to "#{project.name}", user_project_path(project) %></h3>
+        <p><strong>Status</strong>: <%= project.complete ? "Completed" : "In Progress" %></p>
+        <hr />
+      <% end %>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <% @user.projects.each do |project| %>
+        <h3><%= link_to "#{project.name}", user_project_path(project) %></h3>
+        <p>Status: <%= project.complete ? "Completed" : "Working on" %></p>
+      <% end %>
+    </div>
+    <%# <div id="menu2" class="tab-pane fade"> %>
+    <%#   <h3>Completed Projects</h3> %>
+    <%# </div> %>
+  </div>
+</div>
