@@ -6,7 +6,14 @@ class PersonalitiesController < ApplicationController
   end
 
   def create
-    @personality = Personality.create(personality_params)
+    @personality = Personality.new(personality_params)
+    if @personality.save
+      redirect_to user_path(current_user)
+    else
+      @personality = Personality.new
+      @personality_questions = Personality.questions
+      render 'new'
+    end
   end
 
   private
