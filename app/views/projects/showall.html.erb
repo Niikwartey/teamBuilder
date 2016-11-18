@@ -1,11 +1,15 @@
 This is the project index page
-<h1>Browse Projects</h1>
+<div class="container">
+  <h1>Browse Projects</h1>
 
-<% @projects. each do |project| %>
-  <h3><%= project.name %> </h3>
-  <%= project.manager.first_name %>
-  created: <%= project.created_at %>
-  <p> <%= project.description %>
+  <% @projects.each do |project| %>
+    <h3><%= link_to "#{project.name}", user_project_path(current_user, project) %></h3>
+    <%= project.manager.first_name %>
+    created: <%= project.created_at %>
+    <p> <%= project.description %><br> </p>
+    <% if current_user == project.manager %>
+      <%= button_to "delete", delete_project_path(current_user, project) %>
+    <% end %>
+  <% end %>
 
-
-<% end %>
+</div>
