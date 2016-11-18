@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     resources :projects
   end
 
-  get '/projects', to: 'projects#index'
+  get '/projects', to: 'projects#showall'
+
+  delete '/users/:user_id/projects/:id', to: 'projects#destroy', as: :delete_project
 
   # Catch-all route, redirects to root
   match '*path', to: redirect('/'), via: :all

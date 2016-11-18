@@ -1,0 +1,16 @@
+<h3> Projects under the direction of <%= @manager.first_name%> <%= @manager.last_name%></h3>
+
+<% @projects.each do |project| %>
+  <h4><%= project.name %></h4>
+    <%= project.description %>...
+    <%= link_to 'learn more', user_project_path(@manager, project)%>
+  <% if @manager == current_user %>
+    <%= link_to '[edit]' %>
+  <% end %> <br><br>
+
+<% end %>
+
+
+
+<br><br>
+<%= link_to 'all projects', projects_path %>

@@ -1,3 +1,7 @@
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
 <%= form_for @survey do |f| %>
     <%= f.fields_for :responses do |r| %>
       <%= r.hidden_field :question_id %>
