@@ -16,6 +16,17 @@ class PersonalitiesController < ApplicationController
     end
   end
 
+  def edit
+    @personality = Personality.find(params[:id])
+    @personality_questions = Personality.questions
+  end
+
+  def update
+    @personality = Personality.find(params[:id])
+    @personality.update(personality_params)
+    redirect_to user_path(current_user)
+  end
+
   private
 
   def personality_params

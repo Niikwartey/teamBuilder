@@ -1,0 +1,47 @@
+<%= form_for @personality do |f| %>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+  1. <%= f.radio_button :intro_extroversion, "E" %>
+  <%= label :intro_extroversion, "#{@personality_questions[0]}" %>
+
+
+  <br> OR <br>
+
+  <%= f.radio_button :intro_extroversion, "I" %>
+  <%= label :intro_extroversion, "#{@personality_questions[1]}" %>
+  <br>
+  <br>
+
+  2. <%= f.radio_button :sensing_intuition, "S" %>
+  <%= label :sensing_intuition, "#{@personality_questions[2]}" %>
+
+
+  <br> OR <br>
+
+  <%= f.radio_button :sensing_intuition, "N" %>
+  <%= label :sensing_intuition, "#{@personality_questions[3]}" %>
+  <br>
+  <br>
+
+  3. <%= f.radio_button :thinking_feeling, "T" %>
+  <%= label :thinking_feeling, "#{@personality_questions[4]}" %>
+
+  <br> OR <br>
+
+  <%= f.radio_button :thinking_feeling, "F" %>
+  <%= label :thinking_feeling, "#{@personality_questions[5]}" %>
+  <br>
+  <br>
+
+  4. <%= f.radio_button :judging_perceiving, "J" %>
+  <%= label :judging_perceiving, "#{@personality_questions[6]}" %>
+
+  <br> OR <br>
+
+  <%= f.radio_button :judging_perceiving, "P" %>
+  <%= label :judging_perceiving, "#{@personality_questions[7]}" %>
+  <br>
+  <%= f.submit "Submit" %>
+
+<% end %>
