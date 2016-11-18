@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   resources :surveys, only: [:new, :create]
   resources :personalities, only: [:new, :create]
   resources :projects
+  resources :users, only: [:show, :edit, :update]
 
   get '/users/:user_id/projects', to: "projects#public"
-
 
   # Catch-all route, redirects to root
   match '*path', to: redirect('/'), via: :all

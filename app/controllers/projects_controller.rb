@@ -3,15 +3,15 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show]
 
   def index
-    @projects = @manager.owned_projects
+    @projects = Project.all
   end
 
   def show
 
   end
 
-  def showall
-    @projects = Project.all
+  def public
+    @projects = @manager.owned_projects
   end
 
   def new

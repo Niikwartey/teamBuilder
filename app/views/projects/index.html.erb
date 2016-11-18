@@ -1,16 +1,15 @@
-<h3> Projects under the direction of <%= @manager.first_name%> <%= @manager.last_name%></h3>
+This is the project index page
+<div class="container">
+  <h1>Browse Projects</h1>
 
-<% @projects.each do |project| %>
-  <h4><%= project.name %></h4>
-    <%= project.description %>...
-    <%= link_to 'learn more', user_project_path(@manager, project)%>
-  <% if @manager == current_user %>
-    <%= link_to '[edit]' %>
-  <% end %> <br><br>
+  <% @projects.each do |project| %>
+    <h3><%= link_to "#{project.name}", project_path(project) %></h3>
+    <%= project.manager.first_name %>
+    created: <%= project.created_at %>
+    <p> <%= project.description %><br> </p>
+    <% if current_user == project.manager %>
+      <%= button_to "delete", delete_project_path(current_user, project) %>
+    <% end %>
+  <% end %>
 
-<% end %>
-
-
-
-<br><br>
-<%= link_to 'all projects', projects_path %>
+</div>
