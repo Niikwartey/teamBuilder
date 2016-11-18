@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_manager, only: [:new, :create, :index]
+  before_action :set_manager, only: [:new, :create, :index, :public]
   before_action :set_project, only: [:show]
 
   def index

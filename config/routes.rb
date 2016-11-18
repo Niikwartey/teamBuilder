@@ -3,8 +3,12 @@ Rails.application.routes.draw do
   root to: "welcome#home"
   resources :surveys, only: [:new, :create]
   resources :personalities, except: [:destroy, :index]
-  resources :projects
   resources :users, only: [:show, :edit, :update]
+  resources :projects, only: [:index]
+
+  resources :users do
+    resources :projects, except: [:index]
+  end
 
   get '/users/:user_id/projects', to: "projects#public"
 

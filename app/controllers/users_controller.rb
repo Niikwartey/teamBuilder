@@ -5,6 +5,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    if @user.personality
+      @personality_type = @user.personality.type
+      @personality_url = @user.personality.type_url
+    else
+      @personality_type = "Take the Test"
+      @personality_url = "/personalities/new"
+    end
     return redirect_to users_path unless @user == current_user
     respond_to do |format|
       format.html {} # implicit rendering

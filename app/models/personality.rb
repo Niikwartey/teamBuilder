@@ -16,4 +16,8 @@ class Personality < ApplicationRecord
   def type
     self.intro_extroversion + self.sensing_intuition + self.thinking_feeling + self.judging_perceiving
   end
+
+  def type_url
+    "https://www.16personalities.com/#{type}-personality"
+  end
 end

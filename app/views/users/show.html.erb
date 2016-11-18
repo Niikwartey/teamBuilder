@@ -1,6 +1,7 @@
 user show page
 <div class="container">
-  <h1><%= "#{@user.first_name} #{@user.last_name}" %>'s Profile</h1>
+  <h1><%= "#{@user.first_name} #{@user.last_name}" %>'s Profile</h1><br>
+  <h3>Your Personality Type: <%= link_to @personality_type, @personality_url %></h3>
   <hr />
 
   <ul class="nav nav-tabs">
