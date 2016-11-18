@@ -14,12 +14,9 @@ class SurveysController < ApplicationController
 
   def create
     @survey = Survey.new(survey_params)
-    @survey.save
-    if @survey.valid?
+    if @survey.save
       redirect_to projects_path
     else
-      flash[:notice] = "Please fill out all responses"
-      @survey = Survey.new
       @questions = Question.all
       @questions.each do |q|
         @survey.responses.build(question_id: q.id, user_id: current_user.id)

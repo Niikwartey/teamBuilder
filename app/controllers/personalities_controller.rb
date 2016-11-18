@@ -2,6 +2,7 @@ class PersonalitiesController < ApplicationController
 
   def new
     @personality = Personality.new
+    @personality_questions = ["This is a question?", "Me too?"]
   end
 
   def create

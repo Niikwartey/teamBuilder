@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :projects, through: :project_members
   has_many :responses
   has_many :questions, through: :responses
+  has_one :personality
 
   # def projects
   #   ProjectMember.where(member_id: self.id)

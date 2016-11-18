@@ -1,7 +1,20 @@
 <%= form_for @personality do |f| %>
 
-  <%= f.hidden_field :user_id %>
-  
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <%= @personality_questions[0] %>
+    <%= label :intro_extroversion, "Introvert", value: true %>
+    <%= f.radio_button :intro_extroversion, true %>
+    <%= label :intro_extroversion, "False", value: false %>
+    <%= f.radio_button :intro_extroversion, false %>
+
+    <%= @personality_questions[1] %>
+    <%= label :thinking_feeling, "Different", value: true %>
+    <%= f.radio_button :thinking_feeling, true %>
+    <%= label :thinking_feeling, "False", value: false %>
+    <%= f.radio_button :thinking_feeling, false %>
+
+
   <%= f.submit %>
 
 <% end %>
