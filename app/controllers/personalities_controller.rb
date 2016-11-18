@@ -6,7 +6,6 @@ class PersonalitiesController < ApplicationController
   end
 
   def create
-    byebug
     @personality = Personality.create(personality_params)
   end
 

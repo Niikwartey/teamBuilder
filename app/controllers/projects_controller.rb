@@ -24,7 +24,6 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to user_projects_path
     else
-    binding.pry
       render :new
     end
   end

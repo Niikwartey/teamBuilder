@@ -13,5 +13,5 @@
       <%= r.radio_button :answer, false %><br>
       Importance: <%= r.collection_radio_buttons(:importance, @checkboxes, :to_i, :to_i) %>
     <% end %>
-    <br><%= f.submit %>
+    <%= f.submit %>
 <% end %>
