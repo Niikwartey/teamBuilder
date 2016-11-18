@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116210639) do
+ActiveRecord::Schema.define(version: 20161118123039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "personalities", force: :cascade do |t|
+    t.integer "user_id"
+    t.string  "intro_extroversion"
+    t.string  "sensing_intuition"
+    t.string  "thinking_feeling"
+    t.string  "judging_perceiving"
+  end
 
   create_table "project_members", force: :cascade do |t|
     t.integer  "project_id"

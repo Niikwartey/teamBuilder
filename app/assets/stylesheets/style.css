@@ -1,8 +1,9 @@
 #home-wrapper {
-  background-image: linear-gradient(to right bottom, rgba(64, 45, 37, 0.5), rgba(95, 5, 155, 0.5)), url("darktable.jpg");
+  background-image: linear-gradient(to right bottom, rgba(80, 85, 57, 0.5), rgba(135, 15, 175, 0.5)), url("darktable.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
+  background-size: cover;
 
   /*opacity: 0.5;*/
 }
