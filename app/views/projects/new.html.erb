@@ -1,14 +1,24 @@
 <h3>Create a New Project</h3>
 
-<%= form_for [@project] do |f| %>
+<%= form_for [@manager, @project], url: '/users/:user_id/projects', method: 'post' do |f| %>
   <%= f.label :name %> <br />
   <%= f.text_field :name  %> <br />
 
   <%= f.label :description %> <br />
-  <%= f.text_area :description %> <br />
+  <%= f.text_area :description %> <br /><br>
 
-  <%= f.collection_check_boxes :question_ids, @questions, :id, :text %> <br />
-
+  <%= f.fields_for @survey do |h| %>
+    <%= h.fields_for :responses do |r| %>
+      <%= r.hidden_field :question_id %><br>
+      <%= r.hidden_field :user_id %>
+      <%= r.object.question.text %><br>
+      <%= label :answer, "True", value: true %>
+      <%= r.radio_button :answer, true %>
+      <%= label :answer, "False", value: false %>
+      <%= r.radio_button :answer, false %><br>
+      Importance: <%= r.collection_radio_buttons(:importance, @checkboxes, :to_i, :to_i) %><br><br>
+      <% end %>
+    <% end %><br>
   <%= f.submit class: 'btn btn-primary'%>
 
 <% end %>

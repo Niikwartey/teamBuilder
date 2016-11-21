@@ -16,11 +16,30 @@ class ProjectsController < ApplicationController
 
   def new
     @project = @manager.owned_projects.build
-    @questions = Question.all
+    # @questions = Question.all
+    @survey = Survey.new
+
+    @survey.questions = Question.all
+    @responses = @survey.responses
+    @checkboxes = (1..5).to_a
+    # @questions.each do |q|
+    #   @survey.responses.build(question_id: q.id, user_id: current_user.id)
+    # end
   end
 
   def create
+    @manager = current_user
     @project = @manager.owned_projects.build(project_params)
+    @project.save
+    @survey = Survey.create(project_id: @project.id)
+
+    survey_params.values.each do |resp|
+      x = Response.new(question_id: resp[:question_id], answer: resp[:answer], importance: resp[:importance], user_id: current_user.id)
+      @survey.responses << x
+    end
+
+    binding.pry
+
     if @project.save
       redirect_to user_projects_path
     else
@@ -51,6 +70,11 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :description, question_ids: [])
+    params.require(:project).permit(:name, :description)
   end
+
+  def survey_params
+    params[:project][:survey][:responses_attributes]
+  end
+
 end

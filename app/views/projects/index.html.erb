@@ -1,4 +1,3 @@
-This is the project index page
 <div class="container">
   <h1>Browse Projects</h1>
 
@@ -7,9 +6,7 @@ This is the project index page
     <%= project.manager.first_name %>
     created: <%= project.created_at %>
     <p> <%= project.description %><br> </p>
-    <% if current_user == project.manager %>
-      <%= button_to "delete", delete_project_path(current_user, project) %>
-    <% end %>
+
   <% end %>
 
 </div>

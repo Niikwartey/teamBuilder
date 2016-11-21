@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   resources :projects, only: [:index]
 
+  delete '/users/:user_id/projects/:id', to: 'projects#destroy', as: :delete_project_path
+
   resources :users do
     resources :projects, except: [:index]
   end

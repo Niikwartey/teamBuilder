@@ -1,7 +1,8 @@
 class Survey < ApplicationRecord
   has_many :responses
   has_many :questions, through: :responses
-  
+  belongs_to :project
+
   accepts_nested_attributes_for :responses
 
   def responses_attributes=(attributes)
