@@ -1,20 +1,23 @@
-  <% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-  <% end %>
-  <br><br>
-  Please answer each question T/F, and rate the level of importance from least important (1) to most important(5)
+<% if flash[:notice] %>
+  <div class="alert alert-success fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<p class="alert alert-info">Please answer each question T/F, and rate the level of importance from least important (1) to most important (5)</p>
 
 <%= form_for @survey do |f| %>
-    <%= f.fields_for :responses do |r| %>
-      <%= r.hidden_field :question_id %><br>
-      <%= r.hidden_field :user_id %>
-      <%= r.object.question.text %><br>
-      <%= label :answer, "True", value: true %>
-      <%= r.radio_button :answer, true %>
-      <%= label :answer, "False", value: false %>
-      <%= r.radio_button :answer, false %><br>
+  <%= f.fields_for :responses do |r| %>
+    <%= r.hidden_field :question_id %><br>
+    <%= r.hidden_field :user_id %>
+    <%= r.object.question.text %><br>
+    <%= label :answer, "True", value: true %>
+    <%= r.radio_button :answer, true %>
+    <%= label :answer, "False", value: false %>
+    <%= r.radio_button :answer, false %><br>
 
-      Importance: <%= r.collection_radio_buttons(:importance, @checkboxes, :to_i, :to_i) %>
-    <% end %> <br>
-    <%= f.submit %>
+    Importance: <%= r.collection_radio_buttons(:importance, @checkboxes, :to_i, :to_i) %>
+  <% end %> <br>
+  <%= f.submit class: "btn btn-success align-center" %>
 <% end %>
