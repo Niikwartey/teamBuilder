@@ -16,14 +16,9 @@ class ProjectsController < ApplicationController
     @project.survey.responses.each do |resp|
       q = resp.question
 
-      @matches << q.responses.where(answer: resp.answer)
+      @matches << q.member_responses.where(answer: resp.answer)
       @matches.flatten.delete_if { |x| x.user_id == current_user.id }
     end
-    binding.pry
-
-
-
-
   end
 
   def public
@@ -54,7 +49,6 @@ class ProjectsController < ApplicationController
       @survey.responses << x
     end
     @survey.save
-    binding.pry
     if @project.save
       redirect_to user_project_path(current_user, @project)
     else
