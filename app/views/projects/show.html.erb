@@ -1,1 +1,4 @@
-this is the project show page
+<h1><%= @project.name %></h1><br>
+<h2><%= @project.manager.first_name %> <%= @project.manager.last_name %></h2><br>
+
+<p><%= @project.survey.responses %>

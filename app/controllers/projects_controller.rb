@@ -7,6 +7,22 @@ class ProjectsController < ApplicationController
   end
 
   def show
+        # if current_user.id = params[:user_id]
+    @manager = User.find_by(id: params[:user_id])
+    @project = Project.find_by(id: params[:id])
+
+    @matches = []
+
+    @project.survey.responses.each do |resp|
+      q = resp.question
+
+      @matches << q.responses.where(answer: resp.answer)
+      @matches.flatten.delete_if { |x| x.user_id == current_user.id }
+    end
+    binding.pry
+
+
+
 
   end
 
@@ -37,11 +53,10 @@ class ProjectsController < ApplicationController
       x = Response.new(question_id: resp[:question_id], answer: resp[:answer], importance: resp[:importance], user_id: current_user.id)
       @survey.responses << x
     end
-
+    @survey.save
     binding.pry
-
     if @project.save
-      redirect_to user_projects_path
+      redirect_to user_project_path(current_user, @project)
     else
       render :new
     end
