@@ -1,6 +1,6 @@
 <div class="container">
-  <h1><%= "#{@user.first_name} #{@user.last_name}" %>'s Profile</h1><br>
-  <h3>My Personality Type: <%= link_to @personality_type, @personality_url %></h3>
+  <h1 class="username"><%= "#{@user.first_name} #{@user.last_name}" %>'s Profile</h1><br>
+  <h3>Your Personality Type: <%= link_to @personality_type, @personality_url %></h3>
   <hr />
 
   <div id="matches">
@@ -18,9 +18,7 @@
   <h3>My Projects</h3>
 
   <ul class="nav nav-tabs">
-    <li class="active">
-      <a data-toggle="tab" href="#managed-projects">Managed Projects</a>
-    </li>
+    <li class="active"><a data-toggle="tab" href="#managed-projects">Managed Projects</a></li>
     <li><a data-toggle="tab" href="#projects">Projects</a></li>
   </ul>
 

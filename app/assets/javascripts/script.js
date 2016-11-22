@@ -40,7 +40,8 @@ function displayProjects(projects, elemId, userId) {
       <div class="project">
       <button type="delete" value="delete">delete</button>
         <a href="/users/${userId}/projects/${project.id}">${project.name}</a>
-        <small><strong>Status</strong>: ${project.complete?'Completed':'In Progress'}</small>
+        <p>
+        <small><strong>Status</strong>: ${project.complete?'Completed':'In Progress'}</small></p>
       <div>
     `)
   }
