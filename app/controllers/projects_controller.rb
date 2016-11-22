@@ -18,7 +18,6 @@ class ProjectsController < ApplicationController
     end
     x = []
     if @matched != nil
-      binding.pry
       @matched.flatten.each do |resp|
         x << resp.user
       end

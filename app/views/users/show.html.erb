@@ -1,12 +1,13 @@
-user show page
 <div class="container">
   <h1><%= "#{@user.first_name} #{@user.last_name}" %>'s Profile</h1><br>
-  <h3>Your Personality Type: <%= link_to @personality_type, @personality_url %></h3>
+  <h3>My Personality Type: <%= link_to @personality_type, @personality_url %></h3>
   <hr />
 
   <div id="matches">
     <% if @matches %>
-      <h3>Project Matches</h3>
+
+      <h3>Recommended Projects: </h3>
+      <h4>These projects match with the projects you are looking for<h4>
       <% @matches.each do |match| %>
         <%= link_to match.project.name, user_project_path(@user, match.project) %><br>
       <% end %>
@@ -14,7 +15,7 @@ user show page
     <hr />
   </div>
 
-  <h3>Your Projects</h3>
+  <h3>My Projects</h3>
 
   <ul class="nav nav-tabs">
     <li class="active">
