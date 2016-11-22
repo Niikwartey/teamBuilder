@@ -1,10 +1,14 @@
 <h1><%= @project.name %></h1>
-<h3><%= link_to "#{@project.manager.first_name} #{@project.manager.last_name}" %></h3><br>
+<h3><%= @project.description %></h3>
+<h3>Manager: <%= link_to "#{@project.manager.first_name} #{@project.manager.last_name}" %></h3><br>
 
 
 <% if current_user == @project.manager %>
-Recommended matches:
+  Recommended matches:<br>
   <% @names.each do |name| %>
-    <%= link_to "#{name.first_name} #{name.last_name}", project_member_path(@project, name)%>
+    <%= link_to "#{name.first_name} #{name.last_name}", project_member_path(@project, name), method: :post %>
+    <% if !name.awaiting_reply(@project).empty? %>
+      Requested
+    <% end %><br>
   <% end %>
 <% end %>

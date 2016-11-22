@@ -8,9 +8,14 @@ class User < ApplicationRecord
   has_many :projects, through: :project_members
   has_many :responses
   has_many :questions, through: :responses
-  has_one :personality 
+  has_one :personality
 
-  # def projects
-  #   ProjectMember.where(member_id: self.id)
-  # end
+  def project_matches
+    self.project_members.where(status: "pending")
+  end
+
+  def awaiting_reply(project_id)
+    self.project_matches.where(project_id: project_id)
+  end
+
 end

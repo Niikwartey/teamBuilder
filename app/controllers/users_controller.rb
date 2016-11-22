@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    @matches = @user.project_matches
     if @user.personality
       @personality_type = @user.personality.type
       @personality_url = @user.personality.type_url
