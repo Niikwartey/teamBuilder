@@ -4,11 +4,15 @@
 
 
 <% if current_user == @project.manager %>
-  Recommended matches:<br>
-  <% @names.each do |name| %>
-    <%= link_to "#{name.first_name} #{name.last_name}", project_member_path(@project, name), method: :post %>
-    <% if !name.awaiting_reply(@project).empty? %>
-      Requested
-    <% end %><br>
+  <h4>Recommended matches:</h4>
+  <% if @names == nil %>
+    There are no current users that are fit for this project found.
+  <% else %>
+    <% @names.each do |name| %>
+      <%= link_to "#{name.first_name} #{name.last_name}", project_member_path(@project, name), method: :post %>
+      <% if !name.awaiting_reply(@project).empty? %>
+        Requested
+      <% end %><br>
+    <% end %>
   <% end %>
 <% end %>

@@ -17,10 +17,13 @@ class ProjectsController < ApplicationController
       @matched = @matches.flatten.delete_if { |x| x.user_id == @manager.id }
     end
     x = []
-    @matched.flatten.each do |resp|
-      x << resp.user
+    if @matched != nil
+      binding.pry
+      @matched.flatten.each do |resp|
+        x << resp.user
+      end
+      @names = x.uniq
     end
-    @names = x.uniq
   end
 
   def public
