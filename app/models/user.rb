@@ -23,8 +23,8 @@ class User < ApplicationRecord
   end
 
   def accepted?(project)
-    proj = self.project_members.where(project_id: project.id)
-    !proj.empty? && proj.status == "accepted"
+    proj = self.project_members.where(project_id: project.id).first
+    !proj.nil? && proj.status == "accepted"
   end
 
 end

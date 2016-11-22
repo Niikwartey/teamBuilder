@@ -8,8 +8,10 @@ class ProjectMembersController < ApplicationController
   end
 
   def update
-    binding.pry
-    ProjectMember.find_by(user_id: current_user.id, project_id: params[:project_id])
+    project = ProjectMember.find_by(user_id: current_user.id, project_id: params[:project_id])
+    project.status = "accepted"
+    project.save
+    redirect_to user_path(current_user)
   end
 
 end
