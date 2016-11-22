@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
   def show
     @manager = User.find_by(id: params[:user_id])
     @project = Project.find_by(id: params[:id])
-
+    
     @matches = []
     @project.survey.responses.map do |resp|
       q = resp.question

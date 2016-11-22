@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   get '/users/:user_id/projects', to: "projects#public"
 
   #you can change the route that POSTs to ProjectMembers
-  post '/project/:project_id/member/:id', to: "project_members#create", as: :project_member
+  post '/project/:project_id/member', to: "project_members#create", as: :project_member
+  post '/project/:project_id/member/:id', to: "project_members#update", as: :edit_project_member
 
   # Catch-all route, redirects to root
   match '*path', to: redirect('/'), via: :all
