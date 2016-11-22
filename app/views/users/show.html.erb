@@ -32,7 +32,7 @@ user show page
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
       <% @user.owned_projects.each do |project| %>
-        <h3><%= link_to "#{project.name}", user_project_path(project) %></h3>
+        <h3><%= link_to "#{project.name}", user_project_path(current_user, project) %></h3>
         <p><strong>Status</strong>: <%= project.complete ? "Completed" : "In Progress" %></p>
         <hr />
       <% end %>
