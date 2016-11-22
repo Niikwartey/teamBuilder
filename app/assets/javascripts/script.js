@@ -5,10 +5,10 @@
 //     "last_name": "Quartey",
 //     "email": "dq@g.com",
 //     "owned_projects": [
-      
+
 //     ],
 //     "projects": [
-      
+
 //     ]
 //   }
 // }
@@ -34,6 +34,7 @@ function getProjects(user_id) {
 
 function displayProjects(projects, elemId, userId) {
   let container = $(elemId);
+  container.html('');
   for(let project of projects) {
     container.append(`
       <div class="project">
