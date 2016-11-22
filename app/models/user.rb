@@ -14,8 +14,17 @@ class User < ApplicationRecord
     self.project_members.where(status: "pending")
   end
 
+  def accepted_matches
+    self.project_members.where(status: "accepted")
+  end
+
   def awaiting_reply(project_id)
     self.project_matches.where(project_id: project_id)
+  end
+
+  def accepted?(project)
+    proj = self.project_members.where(project_id: project.id)
+    !proj.empty? && proj.status == "accepted"
   end
 
 end

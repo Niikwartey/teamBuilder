@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
   def show
     @manager = User.find_by(id: params[:user_id])
     @project = Project.find_by(id: params[:id])
-    
+
     @matches = []
     @project.survey.responses.map do |resp|
       q = resp.question
@@ -17,10 +17,12 @@ class ProjectsController < ApplicationController
       @matched = @matches.flatten.delete_if { |x| x.user_id == @manager.id }
     end
     x = []
-    @matched.flatten.each do |resp|
-      x << resp.user
+    if @matched != nil
+      @matched.flatten.each do |resp|
+        x << resp.user
+      end
+      @names = x.uniq
     end
-    @names = x.uniq
   end
 
   def public
