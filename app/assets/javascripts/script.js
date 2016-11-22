@@ -38,6 +38,7 @@ function displayProjects(projects, elemId, userId) {
   for(let project of projects) {
     container.append(`
       <div class="project">
+      <button type="delete" value="delete">delete</button>
         <a href="/users/${userId}/projects/${project.id}">${project.name}</a>
         <small><strong>Status</strong>: ${project.complete?'Completed':'In Progress'}</small>
       <div>
