@@ -1,3 +1,9 @@
+body {
+  background-color: #fefefe !important;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
 #home-wrapper {
   background-image: linear-gradient(to right bottom, rgba(80, 85, 57, 0.5), rgba(135, 15, 175, 0.5)), url("darktable.jpg");
   background-size: cover;
@@ -22,4 +28,46 @@
 
 .montserrat {
   font-family: 'Montserrat';
+}
+
+
+form#new_survey{
+  text-align: center;
+}
+
+form#new_project {
+  width: 60%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form#new_project input[type=text] {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 30px;
+}
+
+form#new_project input[type=submit] {
+  text-align: center;
+  background-color: coral;
+  border: none;
+  padding: 10px 20px;
+}
+
+form#new_project .form-group {
+  padding: 0;
+}
+
+.project {
+  font-size: 25px;
+  width: 100%;
+  margin-top: 25px; 
+}
+
+.project * {
+  display: inline-block;
+}
+
+.project a {
+  color: coral;
 }
