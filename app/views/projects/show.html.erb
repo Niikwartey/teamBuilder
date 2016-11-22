@@ -1,4 +1,10 @@
-<h1><%= @project.name %></h1><br>
-<h2><%= @project.manager.first_name %> <%= @project.manager.last_name %></h2><br>
+<h1><%= @project.name %></h1>
+<h3><%= link_to "#{@project.manager.first_name} #{@project.manager.last_name}" %></h3><br>
 
-<p><%= binding.pry %>
+
+<% if current_user == @project.manager %>
+Recommended matches:
+  <% @names.each do |name| %>
+    <%= link_to "#{name.first_name} #{name.last_name}", project_member_path(@project, name)%>
+  <% end %>
+<% end %>

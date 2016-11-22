@@ -1,5 +1,6 @@
 class SurveysController < ApplicationController
   before_action :authenticate_user!
+
   def new
     if !current_user.responses.empty?
       redirect_to projects_path
@@ -14,8 +15,7 @@ class SurveysController < ApplicationController
 
   def create
     @survey = Survey.new(survey_params)
-    if @survey.valid?
-      @survey.save
+    if @survey.save
       redirect_to projects_path
     else
       @questions = Question.all

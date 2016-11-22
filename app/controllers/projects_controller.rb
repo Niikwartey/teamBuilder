@@ -7,18 +7,20 @@ class ProjectsController < ApplicationController
   end
 
   def show
-        # if current_user.id = params[:user_id]
     @manager = User.find_by(id: params[:user_id])
     @project = Project.find_by(id: params[:id])
 
     @matches = []
-
-    @project.survey.responses.each do |resp|
+    @project.survey.responses.map do |resp|
       q = resp.question
-
       @matches << q.member_responses.where(answer: resp.answer)
-      @matches.flatten.delete_if { |x| x.user_id == current_user.id }
+      @matched = @matches.flatten.delete_if { |x| x.user_id == @manager.id }
     end
+    x = []
+    @matched.flatten.each do |resp|
+      x << resp.user
+    end
+    @names = x.uniq
   end
 
   def public
