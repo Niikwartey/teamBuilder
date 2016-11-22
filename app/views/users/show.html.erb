@@ -1,3 +1,4 @@
+user show page
 <div class="container">
   <h1><%= "#{@user.first_name} #{@user.last_name}" %>'s Profile</h1><br>
   <h3>Your Personality Type: <%= link_to @personality_type, @personality_url %></h3>
@@ -5,7 +6,7 @@
 
   <div id="matches">
     <% if @matches %>
-      <h3>Recommended Project </h3>
+      <h3>Project Matches</h3>
       <% @matches.each do |match| %>
         <%= link_to match.project.name, user_project_path(@user, match.project) %><br>
       <% end %>
@@ -17,34 +18,16 @@
 
   <ul class="nav nav-tabs">
     <li class="active">
-      <a data-toggle="tab" href="#home">Managed Projects</a>
-      <ul id="managed-projects">
-        <li><a href="#">Submenu 1-1</a></li>
-        <li><a href="#">Submenu 1-2</a></li>
-        <li><a href="#">Submenu 1-3</a></li>
-      </ul>
+      <a data-toggle="tab" href="#managed-projects">Managed Projects</a>
     </li>
-    <li><a data-toggle="tab" href="#menu1">Projects</a></li>
-    <%# <li><a data-toggle="tab" href="#menu2">Completed Projects</a></li> %>
+    <li><a data-toggle="tab" href="#projects">Projects</a></li>
   </ul>
 
   <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-      <% @user.owned_projects.each do |project| %>
-        <h3><%= link_to "#{project.name}", user_project_path(current_user, project) %></h3>
-        <p><strong>Status</strong>: <%= project.complete ? "Completed" : "In Progress" %></p>
-        <hr />
-      <% end %>
+    <div id="managed-projects" class="tab-pane active">
     </div>
-    <div id="menu1" class="tab-pane fade">
-      <% @user.projects.each do |project| %>
-        <h3><%= link_to "#{project.name}", user_project_path(project) %></h3>
-        <p>Status: <%= project.complete ? "Completed" : "Working on" %></p>
-      <% end %>
+    <div id="projects" class="tab-pane">
     </div>
-    <%# <div id="menu2" class="tab-pane fade"> %>
-    <%#   <h3>Completed Projects</h3> %>
-    <%# </div> %>
   </div>
 </div>
 
